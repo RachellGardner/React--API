@@ -1,16 +1,116 @@
-# React + Vite
+# React--API
+Учебный проект по созданию одностраничного приложения (SPA) на React, который демонстрирует работу с внешним API, маршрутизацией и базовым UI.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+Этот проект представляет собой простой интернет-магазин, состоящий из карточек, реализованный с использованием библиотеки React и фреймворка React Router. Приложение получает данные о товарах с публичного API (https://api.escuelajs.co/api/v1/products) и отображает их в виде сетки карточек. Пользователь может перейти на страницу конкретного товара, где отображается его детальная информация.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Целевая аудитория:
 
-## React Compiler
+Студенты, изучающие React и работу с API.
+Начинающие фронтенд-разработчики, желающие освоить базовые концепции SPA.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Основные функции:
 
-## Expanding the ESLint configuration
+1.Получение списка товаров с внешнего API.
+2.Отображение товаров в виде галереи карточек.
+3.Навигация между главной страницей и страницей отдельного товара.
+4.Загрузка данных в реальном времени с помощью useEffect.
+5.Использование NavLink для создания навигации без перезагрузки страницы.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Установка и запуск
+1.Клонируйте репозиторий:
+  1.1 git clone https://github.com/ваш-логин/ваш-репозиторий.git
+  1.2 cd ваш-репозиторий
+2. Установите зависимости:
+  2.1 
+  ```
+  npm install
+```
+     
+    yarn install
+3. Установка React:
+ 3.1 yarn add -D react react-dom @types/react
+    или
+   зайдите на сайт для полного понимание о React установке https://www.geeksforgeeks.org/installation-guide/how-to-install-reactjs-on-windows/
+4. Запустите сервер разработки:
+bash
+  4.1
+   
+   ```
+      npm start
+  ```
+      yarn start
+```
+6. Откройте в браузере:
+  5.1 Перейдите по адресу http://localhost:3000 .
+  
+Примеры использования
+Главная страница (список товаров):
+
+На главной странице отображается сетка товаров, загруженных с API. Каждая карточка содержит:
+
+Изображение товара.
+Название.
+Цену.
+Краткое описание.
+Кнопку "Order Now", которая является ссылкой на страницу товара.
+/ Пример структуры карточки товара
+<NavLink to={`/products/${product.id}`} className="product-card">
+    <img src={product.images[0]} alt={product.title} />
+    <h3>{product.title}</h3>
+    <div>${product.price}</div>
+    <p>{product.description || "No description available."}</p>
+    <button>Order Now</button>
+</NavLink>
+Страница товара:
+При клике на карточку пользователь попадает на страницу с детальной информацией о товаре, включая его название, цену и изображение. Также присутствует кнопка "Proceed with Payment".
+// Пример страницы товара
+<div className="product-page">
+    <h1>{product.title}</h1>
+    <img src={product.images[0]} alt={product.title} />
+    <h3>{product.title}</h3>
+    <p>${product.price}</p>
+    <button>Proceed with Payment</button>
+</div>
+
+
+# Структура репозитория
+shop/
+├── public/
+│   └── index.html              # Главный HTML-файл
+├── src/
+│   ├── assets/                 # Статические ресурсы (изображения, шрифты)
+│   │   └── react.svg           # Логотип React
+│   ├── pages/                  # Компоненты страниц
+│   │   ├── MainLayout.jsx      # Основной макет с навигацией
+│   │   ├── ProductsPage.jsx    # Страница со списком товаров
+│   │   └── ProductItemPage.jsx # Страница отдельного товара
+│   ├── App.jsx                 # Корневой компонент приложения
+│   ├── index.js                # Точка входа в приложение
+│   └── index.css               # Глобальные стили
+├── .gitignore                  # Файлы, которые игнорируются Git
+├── package.json                # Зависимости и скрипты проекта
+├── README.md                   # Документация проекта (этот файл)
+└── routes.js                   # Конфигурация маршрутов
+
+# Технические требования
+Для работы с этим проектом вам потребуется:
+React —  19.2.0.
+Node.js версии 18.x или выше.
+npm (входит в состав Node.js) или yarn.
+Операционная система: Windows, macOS или Linux.
+Браузер: Современный браузер (Chrome, Firefox, Edge, Safari).
+Редактор кода: VS Code (рекомендуется), но подойдет любой другой.
+
+# Авторы и участники
+Разработчик: RachellGardner
+Роль: Фронтенд-разработчик, создатель проекта.
+
+# Контактная информация
+GitHub:@RachellGardner
+Email: annalilijfos@gmail.com
+
+# Дополнительно
+Этот проект был создан в рамках учебной практики.
+Он использует публичный API для получения данных, поэтому не требует настройки собственного бэкенда.
+В качестве дополнительного задания можно добавить фильтрацию товаров по категориям, поиск или корзину.
